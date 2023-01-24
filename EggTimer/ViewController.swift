@@ -15,5 +15,13 @@ class ViewController: UIViewController {
     }
 
 
+    
+    @IBAction func hardnessSelected(_ sender: UIButton) {
+        if let text = sender.titleLabel?.text {
+            print(text)
+        }
+    }
+    
+    
 }
 
