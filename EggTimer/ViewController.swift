@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         
         timer.invalidate()
         
-        stopButton.titleLabel?.text = "Stop"
+        stopButton.titleLabel!.text = "Stop"
                 
         hardness = sender.titleLabel?.text?.lowercased()
         
