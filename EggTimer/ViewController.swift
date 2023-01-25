@@ -13,7 +13,10 @@ class ViewController: UIViewController {
     var hardness : String?
     
     var boiling = false
+    var boiledTime = 0
+
     
+    @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var hardImage: UIImageView!
     @IBOutlet weak var mediumImage: UIImageView!
     @IBOutlet weak var softImage: UIImageView!
@@ -35,10 +38,10 @@ class ViewController: UIViewController {
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
         
+        timer.invalidate()
+        
         stopButton.titleLabel?.text = "Stop"
-        
-        var boiledTime = 0
-        
+                
         hardness = sender.titleLabel?.text?.lowercased()
         
         switch hardness {
@@ -66,6 +69,7 @@ class ViewController: UIViewController {
         readyLabel.isHidden = true
         
         if counter > 0 {
+            progressBar.progress = Float(counter) / Float(boiledTime)
             stopButton.backgroundColor = .red
             stopButton.layer.cornerRadius = 5
             selectTypeLabel.text = "\(hardness!.uppercased()) selected. Remaining time = \(counter)"
@@ -92,6 +96,7 @@ class ViewController: UIViewController {
             counter -= 1
             
         } else {
+            progressBar.progress = 0
             boiling = false
             readyLabel.isHidden = false
             print("Egg is ready to eat")
