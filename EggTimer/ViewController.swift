@@ -10,28 +10,45 @@ import UIKit
 class ViewController: UIViewController {
     
     let eggTimes =  ["softTime" : 5, "mediumTime" : 7, "hardTime" : 12]
+    var hardness : String?
+    
+    var boiling = false
+    
+    @IBOutlet weak var hardImage: UIImageView!
+    @IBOutlet weak var mediumImage: UIImageView!
+    @IBOutlet weak var softImage: UIImageView!
+    @IBOutlet weak var selectTypeLabel: UILabel!
+    @IBOutlet weak var waitingLabel: UILabel!
+    @IBOutlet weak var readyLabel: UILabel!
+    @IBOutlet weak var stopButton: UIButton!
+    
     
     var timer = Timer()
     
     var counter = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        readyLabel.isHidden = true
+        stopButton.isHidden = true
+        
+        
     }
-
-
+    
+    
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
         
+        
         var boiledTime = 0
         
-        guard let hardness = sender.titleLabel?.text?.lowercased() else {return}
+        hardness = sender.titleLabel?.text?.lowercased()
         
         switch hardness {
         case "soft" :
             boiledTime = eggTimes["softTime"]!
+            
         case "medium" :
             boiledTime = eggTimes["mediumTime"]!
         case "hard" :
@@ -46,17 +63,75 @@ class ViewController: UIViewController {
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
         timer.fire()
-        
-        }
+    }
+    
     @objc func updateUI(){
+        selectTypeLabel.textColor = .black
+        readyLabel.isHidden = true
         
         if counter > 0 {
+            stopButton.backgroundColor = .red
+            stopButton.layer.cornerRadius = 5
+            selectTypeLabel.text = "\(hardness!.uppercased()) selected. Remaining time = \(counter)"
+            stopButton.isHidden = false
+            waitingLabel.isHidden = true
+            readyLabel.isHidden = true
+            
+            boiling = true
+            
+            if let hardness = hardness {
+                if hardness == "soft"{
+                    mediumImage.alpha = 0.5
+                    hardImage.alpha = 0.5
+                } else if hardness == "medium" {
+                    softImage.alpha = 0.5
+                    hardImage.alpha = 0.5
+                } else if hardness == "hard" {
+                    softImage.alpha = 0.5
+                    mediumImage.alpha = 0.5
+                }
+            }
+            
+            
+            
             print(counter)
             counter -= 1
+            
         } else {
+            boiling = false
+            readyLabel.isHidden = false
             print("Egg is ready to eat")
             timer.invalidate()
+            waitingLabel.isHidden = true
+            readyLabel.isHidden = true
+            stopButton.titleLabel?.text = "Restart"
+            stopButton.backgroundColor = .green
+            stopButton.layer.cornerRadius = 5
+            selectTypeLabel.text = "FINISHED"
+            selectTypeLabel.textColor = .red
         }
     }
-}
+    
+    
+    @IBAction func stopButtonTapped(_ sender: Any) {
 
+        print(boiling)
+
+        if boiling {
+            timer.invalidate()
+            counter = 0
+            selectTypeLabel.text = "Please Select Egg Type For Start Timer"
+            stopButton.isHidden = true
+            waitingLabel.isHidden = false
+            readyLabel.isHidden = true
+            softImage.alpha = 1
+            mediumImage.alpha = 1
+            hardImage.alpha = 1
+        } else {
+            
+        }
+
+    }
+    
+    
+}

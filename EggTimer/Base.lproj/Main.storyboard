@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,16 +22,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt2-bk-bR8" userLabel="Title View">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="264.33333333333331"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Egg Type" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="n3d-HE-7w7">
-                                                <rect key="frame" x="47" y="114.33333333333334" width="299" height="36"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select Egg Type For Start Timer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="n3d-HE-7w7">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="264.33333333333331"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="n3d-HE-7w7" firstAttribute="leading" secondItem="tt2-bk-bR8" secondAttribute="leading" id="0ut-4o-1nz"/>
                                             <constraint firstItem="n3d-HE-7w7" firstAttribute="centerY" secondItem="tt2-bk-bR8" secondAttribute="centerY" id="UhU-l1-gTK"/>
                                             <constraint firstItem="n3d-HE-7w7" firstAttribute="centerX" secondItem="tt2-bk-bR8" secondAttribute="centerX" id="Xqz-Gm-b3b"/>
+                                            <constraint firstAttribute="bottom" secondItem="n3d-HE-7w7" secondAttribute="bottom" id="aDU-ez-zLr"/>
+                                            <constraint firstAttribute="trailing" secondItem="n3d-HE-7w7" secondAttribute="trailing" id="bn8-NG-AwK"/>
+                                            <constraint firstItem="n3d-HE-7w7" firstAttribute="top" secondItem="tt2-bk-bR8" secondAttribute="top" id="gEc-Oi-Oed"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZaF-49-wts" userLabel="Eggs Stack View">
@@ -125,16 +130,40 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bp7-dJ-cP4" userLabel="Timer View">
                                         <rect key="frame" x="0.0" y="528.66666666666663" width="393" height="264.33333333333337"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting choose..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owy-tX-Bud">
-                                                <rect key="frame" x="131.33333333333337" y="30" width="130.66666666666663" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting choose..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owy-tX-Bud">
+                                                <rect key="frame" x="121.66666666666669" y="30" width="150" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igB-XA-UI6">
+                                                <rect key="frame" x="151.66666666666666" y="148" width="100" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="1I6-cd-Xon"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="nEx-xa-v17"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Stop">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="stopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JIl-fh-onD"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Egg is ready for eat!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="906-8X-YE5">
+                                                <rect key="frame" x="104" y="84" width="185" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" systemColor="systemPinkColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Owy-tX-Bud" firstAttribute="centerX" secondItem="Bp7-dJ-cP4" secondAttribute="centerX" id="C5l-hb-g2w"/>
                                             <constraint firstItem="Owy-tX-Bud" firstAttribute="top" secondItem="Bp7-dJ-cP4" secondAttribute="top" constant="30" id="GxB-c8-m2s"/>
+                                            <constraint firstItem="906-8X-YE5" firstAttribute="top" secondItem="Owy-tX-Bud" secondAttribute="bottom" constant="30" id="Qx2-Bz-6c1"/>
+                                            <constraint firstItem="906-8X-YE5" firstAttribute="centerX" secondItem="Bp7-dJ-cP4" secondAttribute="centerX" id="Uxh-B3-3OF"/>
+                                            <constraint firstItem="igB-XA-UI6" firstAttribute="centerX" secondItem="Bp7-dJ-cP4" secondAttribute="centerX" constant="5.1666666666666572" id="gWy-f2-aBm"/>
+                                            <constraint firstItem="igB-XA-UI6" firstAttribute="top" secondItem="906-8X-YE5" secondAttribute="bottom" constant="40" id="hve-Tm-z8l"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -157,6 +186,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vfV-Nk-dAb" secondAttribute="trailing" id="khS-KM-LoV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="hardImage" destination="PQp-lE-Xwf" id="c06-X0-o23"/>
+                        <outlet property="mediumImage" destination="V0U-m2-Z4L" id="8Q1-Lj-UBD"/>
+                        <outlet property="readyLabel" destination="906-8X-YE5" id="BkS-Lt-XZS"/>
+                        <outlet property="selectTypeLabel" destination="n3d-HE-7w7" id="yTv-fq-Fc0"/>
+                        <outlet property="softImage" destination="0Z6-1E-GWI" id="5ts-Qc-J3O"/>
+                        <outlet property="stopButton" destination="igB-XA-UI6" id="71J-fk-hXg"/>
+                        <outlet property="waitingLabel" destination="Owy-tX-Bud" id="0Js-FS-QiR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,5 +205,8 @@
         <image name="hard_egg" width="287.66665649414062" height="366.33334350585938"/>
         <image name="medium_egg" width="288" height="363.33334350585938"/>
         <image name="soft_egg" width="287" height="365.33334350585938"/>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
