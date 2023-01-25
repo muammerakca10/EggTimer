@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var readyLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     
-    
     var timer = Timer()
     
     var counter = 0
@@ -32,14 +31,11 @@ class ViewController: UIViewController {
         
         readyLabel.isHidden = true
         stopButton.isHidden = true
-        
-        
     }
-    
-    
-    
+
     @IBAction func hardnessSelected(_ sender: UIButton) {
         
+        stopButton.titleLabel?.text = "Stop"
         
         var boiledTime = 0
         
@@ -92,8 +88,6 @@ class ViewController: UIViewController {
                 }
             }
             
-            
-            
             print(counter)
             counter -= 1
             
@@ -103,7 +97,7 @@ class ViewController: UIViewController {
             print("Egg is ready to eat")
             timer.invalidate()
             waitingLabel.isHidden = true
-            readyLabel.isHidden = true
+            readyLabel.isHidden = false
             stopButton.titleLabel?.text = "Restart"
             stopButton.backgroundColor = .green
             stopButton.layer.cornerRadius = 5
@@ -116,22 +110,19 @@ class ViewController: UIViewController {
     @IBAction func stopButtonTapped(_ sender: Any) {
 
         print(boiling)
+        readyLabel.isHidden = true
+        softImage.alpha = 1
+        mediumImage.alpha = 1
+        hardImage.alpha = 1
+        stopButton.isHidden = true
+        selectTypeLabel.textColor = .black
+        selectTypeLabel.text = "Please Select Egg Type For Start Timer"
+        waitingLabel.isHidden = false
 
         if boiling {
             timer.invalidate()
             counter = 0
-            selectTypeLabel.text = "Please Select Egg Type For Start Timer"
-            stopButton.isHidden = true
-            waitingLabel.isHidden = false
-            readyLabel.isHidden = true
-            softImage.alpha = 1
-            mediumImage.alpha = 1
-            hardImage.alpha = 1
         } else {
-            
         }
-
     }
-    
-    
 }
