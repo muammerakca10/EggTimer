@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         readyLabel.isHidden = true
         
         if counter > 0 {
-            progressBar.progress = Float(counter) / Float(boiledTime)
+            progressBar.progress = Float(boiledTime - counter) / Float(boiledTime)
             stopButton.backgroundColor = .red
             stopButton.layer.cornerRadius = 5
             selectTypeLabel.text = "\(hardness!.uppercased()) selected. Remaining time = \(counter)"
@@ -96,7 +96,7 @@ class ViewController: UIViewController {
             counter -= 1
             
         } else {
-            progressBar.progress = 0
+            progressBar.progress = 1
             boiling = false
             readyLabel.isHidden = false
             print("Egg is ready to eat")
