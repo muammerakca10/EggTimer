@@ -9,13 +9,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let eggTimes =  ["softTime" : 5, "mediumTime" : 8, "hardTime" : 12]
+    let eggTimes =  ["softTime" : 5, "mediumTime" : 7, "hardTime" : 12]
     
     var timer = Timer()
+    
+    var counter = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+
     }
 
 
@@ -37,9 +40,23 @@ class ViewController: UIViewController {
             print("Error")
         }
         
-        print(boiledTime)
+        counter = boiledTime
         
-        //timer.invalidate()
+        //print(boiledTime)
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
+        timer.fire()
+        
         }
+    @objc func updateUI(){
+        
+        if counter > 0 {
+            print(counter)
+            counter -= 1
+        } else {
+            print("Egg is ready to eat")
+            timer.invalidate()
+        }
+    }
 }
 

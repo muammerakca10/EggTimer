@@ -124,6 +124,18 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bp7-dJ-cP4" userLabel="Timer View">
                                         <rect key="frame" x="0.0" y="528.66666666666663" width="393" height="264.33333333333337"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting choose..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owy-tX-Bud">
+                                                <rect key="frame" x="131.33333333333337" y="30" width="130.66666666666663" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Owy-tX-Bud" firstAttribute="centerX" secondItem="Bp7-dJ-cP4" secondAttribute="centerX" id="C5l-hb-g2w"/>
+                                            <constraint firstItem="Owy-tX-Bud" firstAttribute="top" secondItem="Bp7-dJ-cP4" secondAttribute="top" constant="30" id="GxB-c8-m2s"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
