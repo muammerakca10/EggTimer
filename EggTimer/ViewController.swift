@@ -10,7 +10,7 @@ import UserNotifications
 
 class ViewController: UIViewController {
     
-    let eggTimes =  ["softTime" : 5, "mediumTime" : 10, "hardTime" : 15]
+    let eggTimes =  ["softTime" : 300, "mediumTime" : 420, "hardTime" : 720]
     var hardness : String?
     
     var boiling = false
