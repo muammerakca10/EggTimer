@@ -66,9 +66,9 @@ class ViewController: UIViewController {
             print("Error")
         }
         
-        
-        let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
         trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(boiledTime), repeats: false)
+
+        let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
 
         center.add(request) { (error) in
             if error != nil {
