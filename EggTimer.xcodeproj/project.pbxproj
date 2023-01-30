@@ -59,9 +59,9 @@
 				04058A60297FFAAB00BC9DE6 /* AppDelegate.swift */,
 				04058A62297FFAAB00BC9DE6 /* SceneDelegate.swift */,
 				04058A64297FFAAB00BC9DE6 /* ViewController.swift */,
+				04058A6B297FFAAC00BC9DE6 /* LaunchScreen.storyboard */,
 				04058A66297FFAAB00BC9DE6 /* Main.storyboard */,
 				04058A69297FFAAC00BC9DE6 /* Assets.xcassets */,
-				04058A6B297FFAAC00BC9DE6 /* LaunchScreen.storyboard */,
 				04058A6E297FFAAC00BC9DE6 /* Info.plist */,
 			);
 			path = EggTimer;

@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
     
-    let eggTimes =  ["softTime" : 5, "mediumTime" : 7, "hardTime" : 12]
+    let eggTimes =  ["softTime" : 5, "mediumTime" : 10, "hardTime" : 15]
     var hardness : String?
     
     var boiling = false
     var boiledTime = 0
+    
+    var trigger : UNTimeIntervalNotificationTrigger?
 
     
     @IBOutlet weak var progressBar: UIProgressView!
@@ -38,6 +41,14 @@ class ViewController: UIViewController {
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
         
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "Egg Boiling Reminder"
+        content.body = "Your eggs is ready!"
+        content.sound = .defaultRingtone
+        
+        
+        
         timer.invalidate()
         
         stopButton.titleLabel!.text = "Stop"
@@ -47,13 +58,24 @@ class ViewController: UIViewController {
         switch hardness {
         case "soft" :
             boiledTime = eggTimes["softTime"]!
-            
         case "medium" :
             boiledTime = eggTimes["mediumTime"]!
         case "hard" :
             boiledTime = eggTimes["hardTime"]!
         default:
             print("Error")
+        }
+        
+        
+        let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(boiledTime), repeats: false)
+
+        center.add(request) { (error) in
+            if error != nil {
+                print("Error : \(String(describing: error?.localizedDescription))")
+            } else {
+                print("Success notification")
+            }
         }
         
         counter = boiledTime
